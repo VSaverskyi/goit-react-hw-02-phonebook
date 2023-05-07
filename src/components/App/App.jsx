@@ -18,11 +18,12 @@ class App extends Component {
   }
 
   handleSubmit = (name, number) => {
-    this.setState((prevState) => {
-      return {
-        contacts: prevState.contacts.concat({ name, number, id: nanoid() })
+    this.state.contacts.find((item) => item.name.toLowerCase() === name.toLowerCase()) ?
+      alert(name + ' is already in contacts.') :
+      this.setState((prevState) => {
+        return {contacts: prevState.contacts.concat({ name, number, id: nanoid() })}
       }
-    });
+    );
   }
 
   render() {

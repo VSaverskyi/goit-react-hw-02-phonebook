@@ -7,7 +7,7 @@ class Contacts extends Component {
             <ul>
                 {contacts.map((item) => (
                     <li key={item.id}>
-                        {item.name}
+                        {item.name}:{item.number}
                     </li>
                 ))}
             </ul>

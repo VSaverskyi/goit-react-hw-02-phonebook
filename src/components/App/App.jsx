@@ -8,23 +8,31 @@ import Contacts from "components/Contacts/Contacts";
 class App extends Component {
 state = {
   contacts: [],
-  name: ''
+  name: '',
+  number: ''
   }
   
-  handleChange = e => {
+  handleChangeName = e => {
     this.setState({
       name: e.currentTarget.value
     })
   }
 
-  handleSubmit = (formData) => {
+  handleChangeNumber = e => {
+    this.setState({
+      number: e.currentTarget.value
+    })
+  }
+
+  handleSubmit = (name, number) => {
     this.setState((prevState) => {
       return {
-        contacts: prevState.contacts.concat({ name: formData, id: nanoid() })
+        contacts: prevState.contacts.concat({ name, number, id: nanoid() })
       }
     });
     this.setState({
       name: '',
+      number: ''
     })
   }
 
@@ -32,7 +40,7 @@ state = {
     return (
       <Container>
         <Section title='Phonebook'>
-          <Phonebook name={this.state.name} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
+          <Phonebook name={this.state.name} number={this.state.number} onChangeName={this.handleChangeName} onChangeNumber={this.handleChangeNumber} onSubmit={this.handleSubmit}/>
         </Section>
         <Section title='Contacts'>
           <Contacts contacts={this.state.contacts}/>

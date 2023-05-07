@@ -1,13 +1,13 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
 
-class FilterByName extends Component {
-    render() {
+class Filter extends Component {
+render() {
         const { filter, onChange } = this.props;
         const idForFilter = nanoid();
         return (
             <>
-                <label htmlFor={idForFilter}></label>
+                <label htmlFor={idForFilter}>Find contacts by name</label>
                 <input id={idForFilter}
                     type="text"
                     name="filter"
@@ -19,4 +19,4 @@ class FilterByName extends Component {
     }
 }
 
-export default FilterByName;
+export default Filter;

@@ -8,15 +8,15 @@ class ContactList extends Component {
     }
 
     render() {
-        const { contacts, filter } = this.props;
+        const { contacts, filter, onDeleteBtnClick } = this.props;
         const contactsFilter = contacts.filter(this.checkIncludesFilterInArray);
         return (
             <ul>
                 {filter === '' ? (contacts.map((item) => (
-                    <ContactListItem key={item.id} item={item}/>
+                    <ContactListItem key={item.id} item={item} onDeleteBtn={onDeleteBtnClick}/>
                 ))) : ((contactsFilter.length === 0) ? (<li>Contact don`t find</li>) : (contactsFilter
                 .map((item) => (
-                    <ContactListItem key={item.id} item={item}/>
+                    <ContactListItem key={item.id} item={item} onDeleteBtn={onDeleteBtnClick}/>
                 ))))}
             </ul>
         )

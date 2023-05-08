@@ -26,6 +26,12 @@ class App extends Component {
     );
   }
 
+  handleDeleteBtnClick = (id) => {
+    this.setState((prevState) => {
+      return {contacts: prevState.contacts.filter((item) => item.id !== id)}
+    })
+  }
+
   render() {
     const { filter, contacts } = this.state;
     return (
@@ -37,7 +43,7 @@ class App extends Component {
         <>
           <h2>Contacts</h2>
           <Filter filter={filter} onChange={this.handleChange}/>
-          <ContactList contacts={contacts} filter={filter}/>
+          <ContactList contacts={contacts} filter={filter} onDeleteBtnClick={this.handleDeleteBtnClick} />
         </>
         }
       </Container>

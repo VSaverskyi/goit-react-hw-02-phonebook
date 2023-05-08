@@ -2,10 +2,11 @@ import { Component } from "react";
 
 class ContactListItem extends Component {
     render() {
-        const {  name, number } = this.props.item;
+        const {  item, onDeleteBtn } = this.props;
         return (
             <li>
-                {name}:{number}
+                {item.name}:{item.number}
+                <button type="button" onClick={() => onDeleteBtn(item.id)}>Delete</button>
             </li>
         )
     }

@@ -1,5 +1,6 @@
 import ContactListItem from "components/ContactListItem/ContactListItem";
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 class ContactList extends Component {
     checkIncludesFilterInArray = (item) => {
@@ -24,3 +25,13 @@ class ContactList extends Component {
 }
 
 export default ContactList;
+
+ContactList.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+    })),
+    filter: PropTypes.string.isRequired,
+    onDeleteBtnClick: PropTypes.func.isRequired,
+}

@@ -1,6 +1,7 @@
 import ContactListItem from "components/ContactListItem/ContactListItem";
 import { Component } from "react";
 import PropTypes from "prop-types";
+import { ContactListWrapper } from "./ContactList.styled";
 
 class ContactList extends Component {
     checkIncludesFilterInArray = (item) => {
@@ -12,14 +13,14 @@ class ContactList extends Component {
         const { contacts, filter, onDeleteBtnClick } = this.props;
         const contactsFilter = contacts.filter(this.checkIncludesFilterInArray);
         return (
-            <ul>
+            <ContactListWrapper>
                 {filter === '' ? (contacts.map((item) => (
                     <ContactListItem key={item.id} item={item} onDeleteBtn={onDeleteBtnClick}/>
                 ))) : ((contactsFilter.length === 0) ? (<li>Contact don`t find</li>) : (contactsFilter
                 .map((item) => (
                     <ContactListItem key={item.id} item={item} onDeleteBtn={onDeleteBtnClick}/>
                 ))))}
-            </ul>
+            </ContactListWrapper>
         )
     }
 }

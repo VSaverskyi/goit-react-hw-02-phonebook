@@ -1,14 +1,16 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
+import { ButtonDelete, ListItemData, ListItemWrapper } from "./ContactListItem.styled";
 
 class ContactListItem extends Component {
     render() {
         const {  item, onDeleteBtn } = this.props;
         return (
-            <li>
-                {item.name}:{item.number}
-                <button type="button" onClick={() => onDeleteBtn(item.id)}>Delete</button>
-            </li>
+            <ListItemWrapper>
+                <ListItemData>{item.name}:</ListItemData>
+                <ListItemData>{item.number}:</ListItemData>
+                <ButtonDelete type="button" onClick={() => onDeleteBtn(item.id)}>delete</ButtonDelete>
+            </ListItemWrapper>
         )
     }
 }

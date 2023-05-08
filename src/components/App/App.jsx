@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container } from "./App.styled";
+import { Container, ContactsWrapper } from "./App.styled";
 import ContactForm from "components/ContactForm/ContactForm";
 import { nanoid } from "nanoid";
 import ContactList from "components/ContactList/ContactList";
@@ -40,11 +40,11 @@ class App extends Component {
         <ContactForm  onSubmit={this.handleSubmit} />
         
         {contacts.length !== 0 && 
-        <>
+        <ContactsWrapper>
           <h2>Contacts</h2>
           <Filter filter={filter} onChange={this.handleChange}/>
           <ContactList contacts={contacts} filter={filter} onDeleteBtnClick={this.handleDeleteBtnClick} />
-        </>
+        </ContactsWrapper>
         }
       </Container>
     );

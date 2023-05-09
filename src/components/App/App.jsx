@@ -32,6 +32,10 @@ class App extends Component {
     })
   }
 
+  checkIncludesFilterInArray = (item) => {
+        return item.name.toLowerCase().includes(this.state.filter.toLowerCase());
+    }
+
   render() {
     const { filter, contacts } = this.state;
     return (
@@ -43,7 +47,7 @@ class App extends Component {
         <ContactsWrapper>
           <h2>Contacts</h2>
           <Filter filter={filter} onChange={this.handleChange}/>
-          <ContactList contacts={contacts} filter={filter} onDeleteBtnClick={this.handleDeleteBtnClick} />
+          <ContactList contacts={contacts} contactsFilter={contacts.filter(this.checkIncludesFilterInArray)}  onDeleteBtnClick={this.handleDeleteBtnClick} />
         </ContactsWrapper>
         }
       </Container>
